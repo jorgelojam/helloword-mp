@@ -1,0 +1,23 @@
+version: '3.6'
+
+services:
+  wildfly:
+    image: helloworld-mp
+    hostname: wildfly
+    ports:
+      - 8080:8080
+      - 9990:9990
+
+  swaggerui:
+    depends_on:
+      - wildfly
+    image: swaggerapi/swagger-ui
+    ports:
+      - 8888:8080
+
+  swaggereditor:
+    depends_on:
+      - wildfly
+    image: swaggerapi/swagger-editor
+    ports:
+      - 9999:8080
