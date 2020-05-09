@@ -1,5 +1,8 @@
 package org.jtux.demo.helloworld;
 
+import java.util.logging.Logger;
+
+import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.ws.rs.Consumes;
@@ -24,6 +27,9 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 
 @Path("/auth")
 public class LoginApi {
+	
+	@Inject
+	Logger log;
 	
 	@POST
 	@Path("/login")
@@ -67,6 +73,7 @@ public class LoginApi {
 			@Parameter(description = "Cuenta de usuario", required = true)
 			@PathParam("cuenta") String cuenta) {
 		try {
+			log.info("Se genera un tiempo de espera aleatorio");
 			Thread.sleep((long)(Math.random() * 1000));
 		} catch (InterruptedException e) {
 			e.printStackTrace();
