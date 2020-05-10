@@ -24,6 +24,7 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
+import org.eclipse.microprofile.opentracing.Traced;
 
 @Path("/auth")
 public class LoginApi {
@@ -33,6 +34,7 @@ public class LoginApi {
 	
 	@POST
 	@Path("/login")
+	@Traced(false)
 	@Counted(description = "Contador login", absolute = true)
 	@Timed(name = "login-time", description = "Tiempo de procesamiento de login", unit = MetricUnits.MILLISECONDS, absolute = true)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -59,6 +61,7 @@ public class LoginApi {
 	
 	@GET
 	@Path("/unlock/{cuenta}")
+	@Traced(operationName = "unlock-operation")
 	@Counted(description = "Contador unlock", absolute = true)
 	@Timed(name = "unlock-time", description = "Tiempo de procesamiento de unlock", unit = MetricUnits.MILLISECONDS, absolute = true)
 	@Produces({ MediaType.APPLICATION_JSON })

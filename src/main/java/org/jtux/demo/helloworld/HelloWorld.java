@@ -20,6 +20,7 @@ import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.opentracing.Traced;
 
 @Path("/")
 public class HelloWorld {
@@ -28,6 +29,7 @@ public class HelloWorld {
 
 	@GET
 	@Path("/json")
+	@Traced(operationName = "hello-json")
 	@Counted(description = "Contador saludo 1", absolute = true)
 	@Timed(name = "saludo1-time", description = "Tiempo de procesamiento de saludo 1", unit = MetricUnits.MILLISECONDS, absolute = true)
 	@Produces({ MediaType.APPLICATION_JSON })
@@ -42,6 +44,7 @@ public class HelloWorld {
 
 	@GET
 	@Path("/xml")
+	@Traced(operationName = "hello-xml")
 	@Counted(description = "Contador saludo 2", absolute = true)
 	@Timed(name = "saludo2-time", description = "Tiempo de procesamiento de saludo 2", unit = MetricUnits.MILLISECONDS, absolute = true)
 	@Produces({ MediaType.APPLICATION_XML })
@@ -55,6 +58,7 @@ public class HelloWorld {
 
 	@GET
 	@Path("/echo/{texto}")
+	@Traced(operationName = "echo-operation")
 	@Counted(description = "Contador echo", absolute = true)
 	@Timed(name = "echo-time", description = "Tiempo de procesamiento de echo", unit = MetricUnits.MILLISECONDS, absolute = true)
 	@Produces({ MediaType.APPLICATION_JSON })
@@ -71,6 +75,7 @@ public class HelloWorld {
 	
 	@GET
 	@Path("/cliente1")
+	@Traced(operationName = "cliente-simple-operation")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Operation(description = "Cliente simple JAX RS", summary = "cliente jaxrs")
 	@APIResponse(responseCode = "200", description = "Cliente respuesta",
