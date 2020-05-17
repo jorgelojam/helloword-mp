@@ -64,7 +64,7 @@ public class HelloWorld {
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Operation(description = "Simple echo con respuesta en formato JSON", summary = "echo jaxrs")
 	@APIResponse(responseCode = "200", description = "Echo respuesta",
-			content = @Content(mediaType = MediaType.TEXT_PLAIN,
+			content = @Content(mediaType = MediaType.APPLICATION_JSON,
 			schema = @Schema(implementation = String.class)))
 	public Response replyEcho(
 			@Parameter(description = "Texto para respuesta de echo", required = true)
