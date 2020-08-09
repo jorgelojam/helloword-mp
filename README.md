@@ -41,6 +41,6 @@ docker-compose up
 ```
 
 Se levantaran contenedores de swagger y jeager.
-Para ingresar al contenedor de sagger ui puede utilizar su navegador para acceder a este link <http://localhost:8888> en donde se debe utilizar el endpoint http://localhost:8080/openapi
+Para ingresar al contenedor de sagger ui puede utilizar su navegador para acceder a este link <http://localhost:8888> en donde se debe utilizar el endpoint http://localhost:8080/openapi o directamente a este link <http://localhost:8888/?url=http://localhost:8080/openapi>
 
 Para ingresar al contenedor de jeager puede utilizar su navegador para acceder a este link <http://localhost:16686/search>
