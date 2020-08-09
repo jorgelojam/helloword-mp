@@ -1,4 +1,4 @@
-FROM jboss/wildfly:19.0.0.Final
+FROM jboss/wildfly:20.0.1.Final
 COPY standalone-microprofile-jaeger.xml /opt/jboss/wildfly/standalone/configuration/
 COPY maven/helloworld-mp.war /opt/jboss/wildfly/standalone/deployments/
 EXPOSE 8080
